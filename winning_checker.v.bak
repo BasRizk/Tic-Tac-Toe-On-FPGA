@@ -1,0 +1,66 @@
+module winning_checker(check_done, winning , main_vector, state);
+
+output winning [4:0];
+output check_done;
+input [1:0] main_vector [8:0];
+input [2:0] state;
+
+
+always @ (main_vector)
+begin
+if(state == 3'b011) 
+if(main_vector[0] == main_vector[1] == main_vector[2] == 2'b10)
+   winning = 5'b10000;
+else
+	if(main_vector[3] == main_vector[4] == main_vector[5] == 2'b10)
+	   winning = 5'b10001;
+	else
+	    if(main_vector[6] == main_vector[7] == main_vector[8] == 2'b10)
+	        winning = 5'b10010;
+       else
+	        if(main_vector[0] == main_vector[3] == main_vector[6] == 2'b10)
+	           winning = 5'b10011;	
+			  else
+	            if(main_vector[1] == main_vector[4] == main_vector[7] == 2'b10)
+	               winning = 5'b10100;  
+					else
+	                if(main_vector[2] == main_vector[5] == main_vector[8] == 2'b10)
+	                    winning = 5'b10101;	
+						 else
+	                    if(main_vector[0] == main_vector[4] == main_vector[8] == 2'b10)
+	                        winning = 5'b10110;	  
+							  else
+	                        if(main_vector[2] == main_vector[4] == main_vector[6] == 2'b10)
+	                            winning = 5'b10111;	
+									else	 
+									    if(main_vector[0] == main_vector[1] == main_vector[2] == 2'b01)
+                                  winning = 5'b11000;
+                               else
+	                                if(main_vector[3] == main_vector[4] == main_vector[5] == 2'b01)
+	                                    winning = 5'b11001;
+	                                else
+	                                    if(main_vector[6] == main_vector[7] == main_vector[8] == 2'b01)
+	                                        winning = 5'b11010;
+                                       else
+	                                        if(main_vector[0] == main_vector[3] == main_vector[6] == 2'b01)
+	                                             winning = 5'b11011;	
+			                                   else
+	                                             if(main_vector[1] == main_vector[4] == main_vector[7] == 2'b01)
+	                                                 winning = 5'b11100;  
+					                                 else
+	                                                 if(main_vector[2] == main_vector[5] == main_vector[8] == 2'b01)
+	                                                      winning = 5'b11101;	
+						                                  else
+	                                                     if(main_vector[0] == main_vector[4] == main_vector[8] == 2'b01)
+	                                                         winning = 5'b11110;	  
+							                                   else
+	                                                         if(main_vector[2] == main_vector[4] == main_vector[6] == 2'b01)
+	                                                              winning = 5'b11111;
+			
+            check_done = 1;			
+																					  
+																					  
+																					  
+																					  
+				end																	  
+	   endmodule	

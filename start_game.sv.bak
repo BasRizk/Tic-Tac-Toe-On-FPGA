@@ -1,0 +1,50 @@
+module start_game (lights, vector_after_begin, level, buttons, state);
+
+output reg [17:0] lights;
+output reg [1:0] vector_after_begin [8:0];
+output level;
+
+input [8:0] buttons;
+input [2:0] state;
+
+reg tmp_level;
+
+assign level = tmp_level;
+
+always @(buttons or state)
+begin
+	if(state == 2'b000)
+	begin
+		if(buttons == 0)
+		begin
+			lights[0] = 3;
+			lights[4:3] = 3;
+			lights[8:6] = 3;
+		end
+		else
+			begin
+			if(buttons[0] | buttons[1] | buttons[2] == 1)
+				begin
+					lights = 0;
+					tmp_level = 1;
+				end
+			else
+				if(buttons[3] | buttons[4] | buttons[5] == 1)
+				begin
+					lights = 0;
+					tmp_level = 2;
+				end
+			else
+				if(buttons[6] | buttons[7] | buttons[8] == 1)
+				begin
+					lights = 0;
+					tmp_level = 3;
+				end
+			end
+			
+			
+		end
+		
+end
+
+endmodule

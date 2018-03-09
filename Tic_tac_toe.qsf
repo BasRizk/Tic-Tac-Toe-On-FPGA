@@ -1,0 +1,152 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2015 Altera Corporation. All rights reserved.
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, the Altera Quartus Prime License Agreement,
+# the Altera MegaCore Function License Agreement, or other 
+# applicable license agreement, including, without limitation, 
+# that your use is for the sole purpose of programming logic 
+# devices manufactured by Altera and sold by Altera or its 
+# authorized distributors.  Please refer to the applicable 
+# agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 15.1.0 Build 185 10/21/2015 SJ Lite Edition
+# Date created = 16:21:56  November 28, 2017
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		Tic_tac_toe_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "MAX 10"
+set_global_assignment -name DEVICE 10M50DAF484C7G
+set_global_assignment -name TOP_LEVEL_ENTITY Tic_tac_toe
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 15.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "16:21:56  NOVEMBER 28, 2017"
+set_global_assignment -name LAST_QUARTUS_VERSION 15.1.0
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+set_global_assignment -name SYSTEMVERILOG_FILE Tic_tac_toe.sv
+set_global_assignment -name SYSTEMVERILOG_FILE start_game.sv
+set_global_assignment -name SYSTEMVERILOG_FILE winning_checker.sv
+set_global_assignment -name SYSTEMVERILOG_FILE lights_refresher.sv
+set_global_assignment -name SYSTEMVERILOG_FILE user_player.sv
+set_global_assignment -name SYSTEMVERILOG_FILE computer_player.sv
+set_global_assignment -name SYSTEMVERILOG_FILE clk_generator.sv
+set_global_assignment -name SYSTEMVERILOG_FILE score_updater.sv
+set_global_assignment -name SYSTEMVERILOG_FILE seven_seg_dec.sv
+set_location_assignment PIN_B8 -to reset
+set_location_assignment PIN_C14 -to score_board[0][0]
+set_location_assignment PIN_E15 -to score_board[0][1]
+set_location_assignment PIN_C15 -to score_board[0][2]
+set_location_assignment PIN_C16 -to score_board[0][3]
+set_location_assignment PIN_E16 -to score_board[0][4]
+set_location_assignment PIN_D17 -to score_board[0][5]
+set_location_assignment PIN_C17 -to score_board[0][6]
+set_location_assignment PIN_D15 -to score_board[0][7]
+set_location_assignment PIN_C18 -to score_board[1][0]
+set_location_assignment PIN_D18 -to score_board[1][1]
+set_location_assignment PIN_E18 -to score_board[1][2]
+set_location_assignment PIN_B16 -to score_board[1][3]
+set_location_assignment PIN_A17 -to score_board[1][4]
+set_location_assignment PIN_A18 -to score_board[1][5]
+set_location_assignment PIN_B17 -to score_board[1][6]
+set_location_assignment PIN_A16 -to score_board[1][7]
+set_location_assignment PIN_B20 -to score_board[2][0]
+set_location_assignment PIN_A20 -to score_board[2][1]
+set_location_assignment PIN_B19 -to score_board[2][2]
+set_location_assignment PIN_A21 -to score_board[2][3]
+set_location_assignment PIN_B21 -to score_board[2][4]
+set_location_assignment PIN_C22 -to score_board[2][5]
+set_location_assignment PIN_B22 -to score_board[2][6]
+set_location_assignment PIN_A19 -to score_board[2][7]
+set_location_assignment PIN_F21 -to score_board[3][0]
+set_location_assignment PIN_E22 -to score_board[3][1]
+set_location_assignment PIN_E21 -to score_board[3][2]
+set_location_assignment PIN_C19 -to score_board[3][3]
+set_location_assignment PIN_C20 -to score_board[3][4]
+set_location_assignment PIN_D19 -to score_board[3][5]
+set_location_assignment PIN_E17 -to score_board[3][6]
+set_location_assignment PIN_D22 -to score_board[3][7]
+set_location_assignment PIN_F18 -to score_board[4][0]
+set_location_assignment PIN_E20 -to score_board[4][1]
+set_location_assignment PIN_E19 -to score_board[4][2]
+set_location_assignment PIN_J18 -to score_board[4][3]
+set_location_assignment PIN_H19 -to score_board[4][4]
+set_location_assignment PIN_F19 -to score_board[4][5]
+set_location_assignment PIN_F20 -to score_board[4][6]
+set_location_assignment PIN_F17 -to score_board[4][7]
+set_location_assignment PIN_J20 -to score_board[5][0]
+set_location_assignment PIN_K20 -to score_board[5][1]
+set_location_assignment PIN_L18 -to score_board[5][2]
+set_location_assignment PIN_N18 -to score_board[5][3]
+set_location_assignment PIN_M20 -to score_board[5][4]
+set_location_assignment PIN_N19 -to score_board[5][5]
+set_location_assignment PIN_N20 -to score_board[5][6]
+set_location_assignment PIN_L19 -to score_board[5][7]
+set_location_assignment PIN_AA2 -to buttons[0]
+set_location_assignment PIN_AB2 -to buttons[1]
+set_location_assignment PIN_Y3 -to buttons[2]
+set_location_assignment PIN_AB3 -to buttons[3]
+set_location_assignment PIN_Y4 -to buttons[4]
+set_location_assignment PIN_AA5 -to buttons[5]
+set_location_assignment PIN_Y5 -to buttons[6]
+set_location_assignment PIN_AA6 -to buttons[7]
+set_location_assignment PIN_Y6 -to buttons[8]
+set_location_assignment PIN_V10 -to lights[0]
+set_location_assignment PIN_V9 -to lights[1]
+set_location_assignment PIN_V8 -to lights[2]
+set_location_assignment PIN_V7 -to lights[3]
+set_location_assignment PIN_W6 -to lights[4]
+set_location_assignment PIN_W5 -to lights[5]
+set_location_assignment PIN_AA14 -to lights[6]
+set_location_assignment PIN_W12 -to lights[7]
+set_location_assignment PIN_AB12 -to lights[8]
+set_location_assignment PIN_W10 -to lights[9]
+set_location_assignment PIN_W9 -to lights[10]
+set_location_assignment PIN_W8 -to lights[11]
+set_location_assignment PIN_W7 -to lights[12]
+set_location_assignment PIN_V5 -to lights[13]
+set_location_assignment PIN_AA15 -to lights[14]
+set_location_assignment PIN_W13 -to lights[15]
+set_location_assignment PIN_AB13 -to lights[16]
+set_location_assignment PIN_Y11 -to lights[17]
+set_location_assignment PIN_P11 -to in_clk
+set_location_assignment PIN_A8 -to state_indication[0]
+set_location_assignment PIN_A9 -to state_indication[1]
+set_location_assignment PIN_A10 -to state_indication[2]
+set_location_assignment PIN_B10 -to state_indication[3]
+set_location_assignment PIN_D13 -to state_indication[4]
+set_location_assignment PIN_C13 -to state_indication[5]
+set_location_assignment PIN_E14 -to state_indication[6]
+set_location_assignment PIN_D14 -to state_indication[7]
+set_location_assignment PIN_A11 -to state_indication[8]
+set_location_assignment PIN_B11 -to state_indication[9]
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

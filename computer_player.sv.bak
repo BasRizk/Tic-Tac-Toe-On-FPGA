@@ -1,0 +1,3 @@
+module computer_player (vector_after_computer, main_vector, level, state);
+
+endmodule

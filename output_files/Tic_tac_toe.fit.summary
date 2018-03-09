@@ -1,0 +1,18 @@
+Fitter Status : Successful - Sat Dec 09 13:38:16 2017
+Quartus Prime Version : 15.1.0 Build 185 10/21/2015 SJ Lite Edition
+Revision Name : Tic_tac_toe
+Top-level Entity Name : Tic_tac_toe
+Family : MAX 10
+Device : 10M50DAF484C7G
+Timing Models : Preliminary
+Total logic elements : 947 / 49,760 ( 2 % )
+    Total combinational functions : 932 / 49,760 ( 2 % )
+    Dedicated logic registers : 189 / 49,760 ( < 1 % )
+Total registers : 189
+Total pins : 87 / 360 ( 24 % )
+Total virtual pins : 0
+Total memory bits : 0 / 1,677,312 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 288 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )
+UFM blocks : 0 / 1 ( 0 % )
+ADC blocks : 0 / 2 ( 0 % )

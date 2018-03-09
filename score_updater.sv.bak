@@ -1,0 +1,57 @@
+module score_updater S(update_done, score_board, gameover, winning, state, player_symbol , reset , clk);
+
+output reg update_done;
+output reg [7:0] score_board [5:0];
+
+input [7:0] winning;
+input [1:0] state;
+input reset;
+input player_symbol;
+
+reg [3:0] displays [5:0]
+reg [3:0] computer_score;
+reg [3:0] player_score;
+reg [3:0] round_number;
+reg [3:0] enable = 1;
+
+parameter s_updating_score = 3'b101, s_start_game = 3'b000;
+
+parameter C_symbol = 4'd10 , P_symbol = 4'd11 , r_symbol = 4'd12;
+
+
+seven_seg_dec player_segment  (score_board[5], displays[5] , enable[5]); 
+seven_seg_dec player_score_segment  (score_board[4], displays[4] , enable[4]);
+seven_seg_dec computer_segment  (score_board[3], displays[3] , enable[3]); 
+seven_seg_dec computer_score_segment  (score_board[2], displays[2] , enable[2]);
+seven_seg_dec round_segment  (score_board[1], displays[1] , enable[1]); 
+seven_seg_dec round_number_segment  (score_board[0], displays[0] , enable[0]);
+
+always @( state or negedge reset ) 
+begin
+	if(state = s_start_game or reset = 0)
+		begin 
+			displays[5] = P_symbol;
+			displays[4] = 0;
+			displays[3] = C_symbol;
+			displays[2] = 0;
+			displays[1] = r_symbol;
+			displays[0] = 0;
+		end
+	else	
+		if(state = s_updating_score and winning[4] = 1)
+		begin
+			if(player_symbol = winnig[3])
+				player_score++;
+			else
+				computer_score = computer_score++;
+		end	
+end
+
+	
+always @( (computer_score or player_score ) and posedge clk)
+	
+	begin 
+		displays[4] = player_score;
+		displays[2] = computer_score;
+	end
+end

@@ -1,0 +1,99 @@
+module Tic_tac_toe (lights, score_board, buttons, reset);
+
+output [17:0] lights;
+output [7:0] score_board [5:0]; //don't care about it for now
+input [8:0] buttons;
+input reset; //we can add it as input to our modules
+
+reg [1:0] main_vector [8:0];
+reg [2:0] state = 3'b000;
+reg turn_switch = 1; 	// 1 for user, 0 for computer
+
+//wire[1:0] vector_after_begin [8:0];
+wire[1:0] vector_after_user [8:0];
+wire[1:0] vector_after_computer [8:0];
+wire[1:0] vector_after_refresh [8:0];
+wire [1:0] level;
+wire user_choice; // 1 for X, 0 for O
+wire[5:0] winning;  //Determines status of the game somehow 
+wire gameover;
+wire check_done;
+wire update_done;
+
+reg checked;
+reg updated;
+
+always
+begin
+	checked = (check_done)? 1 : 0;
+	updated = (update_done)? 1 : 0;
+end
+
+parameter s_start_game = 3'b000, s_user_playing = 3'b001, s_computer_playing = 3'b010,
+				s_checking = 3'b011, s_refreshing = 3'b100, s_updating_score = 3'b101;
+
+//Intializing our modules - they all depend on the states
+start_game St(lights, level, user_choice, buttons, state);				//at s_start_game
+
+user_player U(vector_after_user, main_vector, buttons, state);										//at s_user_playing
+computer_player AI(vector_after_computer, main_vector, level, state);							//at s_computer_playing
+	
+winning_checker C(check_done, winning, main_vector, state);											//at s_checking
+lights_refresher R(vector_after_refresh, lights, main_vector, state, winning, reset);		//at s_refreshing
+score_updater S(update_done, score_board, gameover, winning, state, user_choice, reset);	//at s_updating
+
+
+//changing our state depending on the transitions happening
+
+always @ (level)
+begin
+	if(user_choice == 1)
+		state = s_user_playing;
+	else
+		state = s_computer_playing;
+end
+
+always @ (vector_after_user or vector_after_computer)
+begin
+	state = s_checking;				//checking should happen
+	turn_switch = ~turn_switch;	//toggle turn
+end
+	
+always @ (checked or winning)
+	state = s_refreshing;		
+	
+always @ (vector_after_refresh or lights) //meaning refresh_done
+	state = s_updating_score;
+	
+always @ (updated)
+begin
+	if(gameover == 1)
+		state = s_start_game;
+	else
+		if(turn_switch == 1)
+			state = s_user_playing;
+		else
+			state = s_computer_playing;
+end
+
+always @ (negedge reset)
+	state = s_start_game;
+	
+//Updating our main_vector depending on any change of state
+//We can add more states, if we decided to
+//we can add something for the start of the game part as well
+
+always @ (state) 
+begin
+	case(state)
+		s_start_game		: main_vector <= vector_after_begin;
+		
+		s_checking			: if(turn_switch == 1) main_vector <= vector_after_user;
+								  else main_vector <= vector_after_computer;
+	
+		s_updating_score	: main_vector <= vector_after_refresh;
+		
+	endcase
+end
+
+endmodule

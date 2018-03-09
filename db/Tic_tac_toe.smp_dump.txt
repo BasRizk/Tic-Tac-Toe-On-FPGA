@@ -1,0 +1,7 @@
+
+State Machine - |Tic_tac_toe|start_game:St|tmp_level
+Name tmp_level.11 tmp_level.10 tmp_level.01 tmp_level.00 
+tmp_level.00 0 0 0 0 
+tmp_level.01 0 0 1 1 
+tmp_level.10 0 1 0 1 
+tmp_level.11 1 0 0 1 

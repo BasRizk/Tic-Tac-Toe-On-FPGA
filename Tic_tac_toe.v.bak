@@ -1,0 +1,28 @@
+module Tic_tac_toe (lights, score_board, buttons);
+
+	output [17:0] lights;
+	output score_board; //don't care about it for now
+	input [8:0] buttons;
+	
+	reg [1:0] main_array [8:0];
+	reg [1:0] state;
+	reg [1:0] level;
+	
+	
+	user_module U(array_after_user, main_array, buttons)
+	
+	always@(array_after_user)
+		state = 2'b00
+		
+	always@(array_after_check)
+		state = 2'b01
+		
+	always@(array_after_computer)
+		state = 2'b10
+		
+	always@(state)
+		case(state)
+		2'b00: main_array <= array_after_user
+		2'b01: main_array <= array_after_check
+		2'b10: main_array <= array_after_computer
+		default:

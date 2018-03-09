@@ -1,0 +1,26 @@
+module user_module(vector_after_user,main_vector,buttons,state);
+output reg [1:0]  vector_after_user[8:0];
+input[1:0] main_vector[8:0];
+input[8:0] buttons;
+input[1:0] state;
+integer i;
+integer j;
+for(i=0;i<9;i=i+1)
+    for(j=0;j<2;j=j+1)
+    	assign vector_after_user[i][j] = main_vector[i][j];
+always @(buttons)
+begin
+case(buttons)
+    9'b000000001:if(vector_after_user[0] == 0) vector_after_user[0] = 2'b01; 
+    9'b000000010:if(vector_after_user[1] == 0) vector_after_user[1] = 2'b01; 
+    9'b000000100:if(vector_after_user[2] == 0) vector_after_user[2] = 2'b01; 
+    9'b000001000:if(vector_after_user[3] == 0) vector_after_user[3] = 2'b01; 
+    9'b000010000:if(vector_after_user[4] == 0) vector_after_user[4] = 2'b01; 
+    9'b000100000:if(vector_after_user[5] == 0) vector_after_user[5] = 2'b01; 
+    9'b001000000:if(vector_after_user[6] == 0) vector_after_user[6] = 2'b01; 
+    9'b010000000:if(vector_after_user[7] == 0) vector_after_user[7] = 2'b01; 
+    9'b100000000:if(vector_after_user[8] == 0) vector_after_user[8] = 2'b01; 
+    endcase
+end
+
+endmodule
